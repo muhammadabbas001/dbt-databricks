@@ -49,3 +49,21 @@ Parsing Error
 [0m08:34:17.544511 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1057e1dc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106563bc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106ac6f90>]}
 [0m08:34:17.544722 [debug] [MainThread]: Flushing usage events
 [0m08:34:18.793362 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:06:14.283961 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10687f050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11b097680>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11b0973e0>]}
+
+
+============================== 09:06:14.287723 | 4b3f49f1-196e-45c6-8cac-2f067442fd10 ==============================
+[0m09:06:14.287723 [info ] [MainThread]: Running with dbt=1.11.11
+[0m09:06:14.288068 [debug] [MainThread]: running dbt with arguments {'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_cache_events': 'False', 'indirect_selection': 'eager', 'use_colors': 'True', 'log_path': 'logs', 'partial_parse': 'True', 'introspect': 'True', 'printer_width': '80', 'log_format': 'default', 'version_check': 'True', 'empty': 'None', 'cache_selected_only': 'False', 'quiet': 'False', 'invocation_command': 'dbt debug', 'use_experimental_parser': 'False', 'no_print': 'None', 'debug': 'False', 'warn_error': 'None', 'write_json': 'True', 'fail_fast': 'False', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '/Users/muhammadabbas/Documents/DataEngineering/airbnb-dbt-berlin/airbnb/_prod_profiles', 'target_path': 'None'}
+[0m09:06:14.299064 [info ] [MainThread]: dbt version: 1.11.11
+[0m09:06:14.299324 [info ] [MainThread]: python version: 3.12.9
+[0m09:06:14.299479 [info ] [MainThread]: python path: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12
+[0m09:06:14.299619 [info ] [MainThread]: os info: macOS-26.3.1-arm64-arm-64bit
+[0m09:06:14.302710 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'SNOWFLAKE_ACCOUNT'
+[0m09:06:14.304973 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.062921956, "process_in_blocks": "0", "process_kernel_time": 0.172939, "process_mem_max_rss": "113852416", "process_out_blocks": "0", "process_user_time": 0.801189}
+[0m09:06:14.305421 [debug] [MainThread]: Command `dbt debug` failed at 09:06:14.305316 after 0.06 seconds
+[0m09:06:14.305684 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1049a2cf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11aafdf70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a48aff0>]}
+[0m09:06:14.305901 [debug] [MainThread]: Flushing usage events
+[0m09:06:15.559766 [debug] [MainThread]: An error was encountered while trying to flush usage events

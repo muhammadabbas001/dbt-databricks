@@ -1,0 +1,11 @@
+sources:
+  - name: amazon_databricks
+    database: amazon
+    schema: raw
+    tables:
+      - name: cust_info
+      - name: prd_info
+      - name: sales_details
+      - name: cust_az12
+      - name: loc_a101
+      - name: px_cat_g1v2
