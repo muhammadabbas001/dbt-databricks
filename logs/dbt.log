@@ -1,0 +1,51 @@
+[0m08:29:40.095318 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10362ab70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104b97560>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104b97290>]}
+
+
+============================== 08:29:40.098727 | def46501-2b8a-470e-831e-a97120dc8e83 ==============================
+[0m08:29:40.098727 [info ] [MainThread]: Running with dbt=1.11.11
+[0m08:29:40.099080 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'cache_selected_only': 'False', 'printer_width': '80', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'indirect_selection': 'eager', 'log_path': 'logs', 'no_print': 'None', 'log_cache_events': 'False', 'invocation_command': 'dbt init', 'static_parser': 'True', 'debug': 'False', 'profiles_dir': '/Users/muhammadabbas/Documents/DataEngineering/airbnb-dbt-berlin/airbnb/_prod_profiles', 'version_check': 'True', 'write_json': 'True', 'partial_parse': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'quiet': 'False', 'fail_fast': 'False', 'empty': 'None', 'introspect': 'True', 'warn_error': 'None'}
+[0m08:29:49.776303 [debug] [MainThread]: Starter project path: /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/dbt/include/starter_project
+[0m08:29:49.782389 [info ] [MainThread]: 
+Your new dbt project "amazon" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m08:29:49.782701 [info ] [MainThread]: Setting up your profile.
+[0m08:29:53.243127 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m08:29:53.243453 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m08:29:53.243638 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m08:34:00.824183 [info ] [MainThread]: Profile amazon written to /Users/muhammadabbas/Documents/DataEngineering/airbnb-dbt-berlin/airbnb/_prod_profiles/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m08:34:00.873889 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 260.86484, "process_in_blocks": "0", "process_kernel_time": 0.397282, "process_mem_max_rss": "226672640", "process_out_blocks": "0", "process_user_time": 1.655649}
+[0m08:34:00.877410 [debug] [MainThread]: Command `dbt init` succeeded at 08:34:00.877096 after 260.87 seconds
+[0m08:34:00.878593 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104a43c80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ca0f890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108765310>]}
+[0m08:34:00.880013 [debug] [MainThread]: Flushing usage events
+[0m08:34:02.900955 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:34:17.520669 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10514bb90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106a97710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106a96120>]}
+
+
+============================== 08:34:17.524736 | a0d2d329-337c-4378-aba6-bf1fed61b898 ==============================
+[0m08:34:17.524736 [info ] [MainThread]: Running with dbt=1.11.11
+[0m08:34:17.525083 [debug] [MainThread]: running dbt with arguments {'log_path': 'logs', 'use_colors': 'True', 'use_experimental_parser': 'False', 'printer_width': '80', 'indirect_selection': 'eager', 'fail_fast': 'False', 'empty': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt debug', 'version_check': 'True', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'write_json': 'True', 'debug': 'False', 'warn_error': 'None', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '/Users/muhammadabbas/Documents/DataEngineering/airbnb-dbt-berlin/airbnb/_prod_profiles', 'introspect': 'True', 'log_format': 'default', 'quiet': 'False', 'target_path': 'None', 'cache_selected_only': 'False', 'log_cache_events': 'False'}
+[0m08:34:17.537025 [info ] [MainThread]: dbt version: 1.11.11
+[0m08:34:17.537337 [info ] [MainThread]: python version: 3.12.9
+[0m08:34:17.537506 [info ] [MainThread]: python path: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12
+[0m08:34:17.537767 [info ] [MainThread]: os info: macOS-26.3.1-arm64-arm-64bit
+[0m08:34:17.541422 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'SNOWFLAKE_ACCOUNT'
+[0m08:34:17.543954 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.07529717, "process_in_blocks": "0", "process_kernel_time": 0.174934, "process_mem_max_rss": "114065408", "process_out_blocks": "0", "process_user_time": 0.794837}
+[0m08:34:17.544303 [debug] [MainThread]: Command `dbt debug` failed at 08:34:17.544246 after 0.08 seconds
+[0m08:34:17.544511 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1057e1dc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106563bc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106ac6f90>]}
+[0m08:34:17.544722 [debug] [MainThread]: Flushing usage events
+[0m08:34:18.793362 [debug] [MainThread]: An error was encountered while trying to flush usage events
