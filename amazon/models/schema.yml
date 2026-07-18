@@ -1,0 +1,136 @@
+models:
+  - name: silver_crm_cust_info
+    columns:
+      - name: cst_id
+        tests:
+          - unique
+          - not_null
+
+      - name: cst_key
+        tests:
+          - unique
+          - not_null
+
+      - name: cst_firstname
+        tests:
+          - not_null
+
+      - name: cst_lastname
+        tests:
+          - not_null
+
+      - name: cst_marital_status
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Married
+                - Single
+                - "n/a"
+
+      - name: cst_gndr
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Male
+                - Female
+                - "n/a"
+
+      - name: cst_create_date
+        tests:
+          - not_null
+
+  - name: silver_crm_prd_info
+    columns:
+      - name: prd_id
+        tests:
+          - unique
+          - not_null
+
+      - name: cat_id
+        tests:
+          - not_null
+
+      - name: prd_key
+        tests:
+          - unique
+          - not_null
+
+      - name: prd_nm
+        tests:
+          - not_null
+
+      - name: prd_cost
+        tests:
+          - not_null
+
+      - name: prd_line
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Mountain
+                - Road
+                - Other Sales
+                - Touring
+                - "n/a"
+
+      - name: prd_start_dt
+        tests:
+          - not_null
+
+  - name: silver_crm_sales_details
+    columns:
+      - name: sls_ord_num
+        tests:
+          - not_null
+
+      - name: sls_prd_key
+        tests:
+          - not_null
+
+      - name: sls_cust_id
+        tests:
+          - not_null
+
+      - name: sls_sales
+        tests:
+          - not_null
+
+      - name: sls_quantity
+        tests:
+          - not_null
+
+      - name: sls_price
+        tests:
+          - not_null
+
+  - name: silver_erp_cust_az12
+    columns:
+      - name: cid
+        tests:
+          - not_null
+          - unique
+
+      - name: bdate
+
+      - name: gen
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Male
+                - Female
+                - "n/a"
+
+  - name: silver_erp_loc_a101
+    columns:
+      - name: cid
+        tests:
+          - not_null
+          - unique
+
+      - name: cntry
+        tests:
+          - not_null
