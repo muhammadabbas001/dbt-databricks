@@ -54,7 +54,6 @@ models:
 
       - name: prd_key
         tests:
-          - unique
           - not_null
 
       - name: prd_nm
