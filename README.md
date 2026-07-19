@@ -250,3 +250,12 @@ This project is licensed under the [MIT License](LICENSE). You are free to use, 
 ## 🌟 About Me
 
 Hi there! I'm **Muhammad Abbas**. I’m an IT professional and passionate about data engineering.
+
+## 🙏 Special Thanks
+
+A special thanks to **Data With Baraa** for creating outstanding data engineering and analytics content. Your tutorials, open-source projects, and educational resources have been incredibly valuable in helping me learn and improve my skills.
+
+- **GitHub:** https://github.com/DataWithBaraa
+- **YouTube:** https://www.youtube.com/@DataWithBaraa
+
+Thank you for sharing your knowledge with the community and making high-quality learning resources freely accessible. Your work is greatly appreciated.
