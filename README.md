@@ -36,81 +36,212 @@ This project involves:
 
 ---
 
-## 🛠️ Important Links & Tools:
+## Project Structure
 
-Everything is for Free!
-
-- **[Datasets](datasets/):** Access to the project dataset (csv files).
-- **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Lightweight server for hosting your SQL database.
-- **[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16):** GUI for managing and interacting with databases.
-- **[Git Repository](https://github.com/):** Set up a GitHub account and repository to manage, version, and collaborate on your code efficiently.
-- **[DrawIO](https://www.drawio.com/):** Design data architecture, models, flows, and diagrams.
-- **[Notion](https://www.notion.com/templates/sql-data-warehouse-project):** Get the Project Template from Notion
-- **[Notion Project Steps](https://thankful-pangolin-2ca.notion.site/SQL-Data-Warehouse-Project-16ed041640ef80489667cfe2f380b269?pvs=4):** Access to All Project Phases and Tasks.
-
----
-
-## 🚀 Project Requirements
-
-### Building the Data Warehouse (Data Engineering)
-
-#### Objective
-
-Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
-
-#### Specifications
-
-- **Data Sources**: Import data from two source systems (ERP and CRM) provided as CSV files.
-- **Data Quality**: Cleanse and resolve data quality issues prior to analysis.
-- **Integration**: Combine both sources into a single, user-friendly data model designed for analytical queries.
-- **Scope**: Focus on the latest dataset only; historization of data is not required.
-- **Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
-
----
-
-### BI: Analytics & Reporting (Data Analysis)
-
-#### Objective
-
-Develop SQL-based analytics to deliver detailed insights into:
-
-- **Customer Behavior**
-- **Product Performance**
-- **Sales Trends**
-
-These insights empower stakeholders with key business metrics, enabling strategic decision-making.
-
-For more details, refer to [docs/requirements.md](docs/requirements.md).
-
-## 📂 Repository Structure
-
-```
-data-warehouse-project/
-│
-├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
-│
-├── docs/                               # Project documentation and architecture details
-│   ├── etl.drawio                      # Draw.io file shows all different techniquies and methods of ETL
-│   ├── data_architecture.drawio        # Draw.io file shows the project's architecture
-│   ├── data_catalog.md                 # Catalog of datasets, including field descriptions and metadata
-│   ├── data_flow.drawio                # Draw.io file for the data flow diagram
-│   ├── data_models.drawio              # Draw.io file for data models (star schema)
-│   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
-│
-├── scripts/                            # SQL scripts for ETL and transformations
-│   ├── bronze/                         # Scripts for extracting and loading raw data
-│   ├── silver/                         # Scripts for cleaning and transforming data
-│   ├── gold/                           # Scripts for creating analytical models
-│
-├── tests/                              # Test scripts and quality files
-│
-├── README.md                           # Project overview and instructions
-├── LICENSE                             # License information for the repository
-├── .gitignore                          # Files and directories to be ignored by Git
-└── requirements.txt                    # Dependencies and requirements for the project
+```text
+amazon/
+  dbt_project.yml
+  models/
+    bronze/
+    silver/
+    gold/
+    schema.yml
+    sources.yml
+  tests/
+  macros/
+  seeds/
+  snapshots/
 ```
 
+### Main folders
+
+- dbt_project.yml: Project configuration and materialization rules
+- models/: Contains all dbt models and schema tests
+- tests/: Contains singular tests for custom data quality checks
+- macros/: Custom dbt macros
+- seeds/: Seed data files
+- snapshots/: Snapshot configurations
+
 ---
+
+## Implemented Models
+
+### Bronze Layer
+
+These models load or stage the source data into the warehouse:
+
+- bronze_crm_cust_info
+- bronze_crm_prd_info
+- bronze_crm_sales_details
+- bronze_erp_cust_az12
+- bronze_erp_loc_a101
+- bronze_erp_px_cat_g1v2
+
+### Silver Layer
+
+These models clean and standardize the data for downstream analytics:
+
+- silver_crm_cust_info
+- silver_crm_prd_info
+- silver_crm_sales_details
+- silver_erp_cust_az12
+- silver_erp_loc_a101
+- silver_erp_px_cat_g1v2
+
+### Gold Layer
+
+These models provide business-ready analytics tables:
+
+- dim_customers
+- dim_products
+- fact_sales
+
+---
+
+## Generic Tests Implemented
+
+Generic tests are defined in models/schema.yml and are applied to the silver layer models.
+
+### Included test types
+
+- unique
+- not_null
+- accepted_values
+
+### Examples of columns tested
+
+- Customer ID, customer key, and first/last name fields
+- Product ID, category ID, product name, and cost fields
+- Sales order, product key, customer ID, sales amount, quantity, and price fields
+- Gender and marital status values with allowed values
+
+These tests help ensure that critical fields are populated and that values stay within expected business rules.
+
+---
+
+## Singular Tests Implemented
+
+Singular tests are stored in the tests/ folder and validate relationships between models.
+
+### Current singular tests
+
+- cust_info_az12_test.sql
+  - Validates that customer information aligns with ERP customer data for AZ12
+- cust_info_loc_test.sql
+  - Validates that customer information aligns with ERP location data
+- prd_cat_test.sql
+  - Validates that product information aligns with ERP product category data
+- sales_prd_cust_test.sql
+  - Validates that sales data can be linked correctly to products and customers
+
+These tests are useful for enforcing cross-model business logic and data integrity.
+
+---
+
+## How to Set Up This Project
+
+### 1. Prerequisites
+
+Make sure you have:
+
+- Python installed
+- dbt Core installed
+- The correct adapter for your warehouse:
+  - dbt-databricks for Databricks
+  - dbt-snowflake for Snowflake
+
+### 2. Install dbt and the adapter
+
+Example:
+
+```bash
+pip install dbt-core
+pip install dbt-databricks
+# or
+pip install dbt-snowflake
+```
+
+### 3. Create your profiles.yml file
+
+dbt uses a profiles.yml file to connect to your warehouse. On macOS, the file is typically stored at:
+
+```text
+~/.dbt/profiles.yml
+```
+
+### 4. Run dbt commands
+
+From the project folder:
+
+```bash
+dbt deps
+dbt debug
+dbt run
+dbt test
+```
+
+---
+
+## Connecting to Databricks or Snowflake with profiles.yml
+
+### Databricks example
+
+```yaml
+amazon:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      schema: analytics
+      host: https://<your-workspace>.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/<warehouse-id>
+      token: { { env_var('DATABRICKS_TOKEN') } }
+      catalog: main
+```
+
+### Snowflake example
+
+```yaml
+amazon:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: <your-account>
+      user: <your-user>
+      password: { { env_var('SNOWFLAKE_PASSWORD') } }
+      role: SYSADMIN
+      warehouse: <your-warehouse>
+      database: <your-database>
+      schema: analytics
+```
+
+> Replace the placeholder values with your actual warehouse credentials and environment settings.
+
+---
+
+## Recommended dbt Workflow
+
+```bash
+dbt run
+dbt test
+dbt docs generate
+dbt docs serve
+```
+
+This workflow helps you build the models, validate the data quality rules, and inspect the generated documentation locally.
+
+---
+
+## Summary
+
+This dbt project demonstrates:
+
+- Medallion architecture implementation
+- Bronze, Silver, and Gold modeling
+- dbt generic tests and singular tests
+- Warehouse connectivity through profiles.yml
+- A reusable analytics foundation for CRM and ERP data
 
 ## 🛡️ License
 
